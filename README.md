@@ -1,4 +1,4 @@
-# DarkMode-BasedOnSunset-Sunrise
+# DarkMode-Based On Sunrise-Sunset
 
 Automatic dark mode for webpages
 
