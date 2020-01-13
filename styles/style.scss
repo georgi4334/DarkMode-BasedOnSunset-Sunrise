@@ -1,0 +1,102 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container-fluid {
+  .text {
+    padding: 21px;
+    margin-top: 67px;
+    text-align: center;
+  }
+}
+
+* {
+  transition: all 0.4s ease-out;
+}
+
+/*colors day*/
+$navbar-night: rgb(54, 52, 52);
+$font-color-night: rgb(255, 255, 255);
+$body-background-night: rgb(0, 0, 0);
+$container-night: rgb(54, 52, 52);
+$border-night: rgb(49, 43, 43);
+$button-night: rgb(67, 165, 168);
+
+.night-theme {
+  .navbar {
+    background-color: $navbar-night !important;
+    color: $font-color-night !important;
+  }
+  .container-fluid {
+    background: $body-background-night !important;
+    h1,
+    p {
+      color: $font-color-night;
+    }
+
+    .card {
+      background-color: $border-night;
+      h5 {
+        color: $font-color-night;
+      }
+      img {
+        opacity: 0.8;
+      }
+      .card-body {
+        background: $container-night;
+      }
+      .btn-primary {
+        background: $button-night;
+        border-color: $button-night;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 973px) {
+  .card {
+    margin: 10px 0;
+  }
+}
+
+
+/***********checkbox custom styles**************/
+/** Switch
+ -------------------------------------*/
+
+ .switch input {
+  position: absolute;
+  opacity: 0;
+}
+
+/**
+ * 1. Adjust this to size
+ */
+
+.switch {
+  display: inline-block;
+  font-size: 20px; /* 1 */
+  height: 1em;
+  width: 2em;
+  background: #5fccff;
+  border-radius: 1em;
+}
+
+.switch div {
+  height: 1em;
+  width: 1em;
+  border-radius: 1em;
+  background: #fff;
+  box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
+  transition: all 300ms;
+}
+
+.switch input:checked + div {
+ 
+  transform: translate3d(100%, 0, 0);
+}
+
+.text-toggle{
+  display: none;
+}
