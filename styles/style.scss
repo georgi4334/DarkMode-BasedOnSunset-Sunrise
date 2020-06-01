@@ -1,102 +1,358 @@
+//Colors
+
+//Primary 
+
+$LimeGreen: hsl(163, 72%, 41%);
+$BrightRed: hsl(356, 69%, 56%);
+
+$Facebook: hsl(203, 89%, 53%);
+$Twitter: hsl(195, 100%, 50%);
+$Instagram: linear-gradient(to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+$YouTube: hsl(348, 97%, 39%);
+
+//Dark theme
+
+$ToggleDarkTheme: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+
+$VeryDarkBlueBG: hsl(230, 17%, 14%);
+$VeryDarkBlueTopBGPattern: hsl(232, 19%, 15%);
+$DarkDesaturatedBlueCardBG: hsl(228, 28%, 20%);
+$DesaturatedBlueText: hsl(228, 34%, 66%);
+$WhiteText: hsl(0, 0%, 100%);
+
+//Light theme
+
+$Toggle: hsl(230, 22%, 74%);
+
+$WhiteBG: hsl(0, 0%, 100%);
+$VeryPaleBlueTopBGPattern: hsl(225, 100%, 98%);
+$LightGrayishBlueCardBG: hsl(227, 47%, 96%);
+$DarkGrayishBlueText: hsl(228, 12%, 44%);
+$VeryDarkBlueText: hsl(230, 17%, 14%);
+
 html,
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+
 }
+
 .container-fluid {
-  .text {
-    padding: 21px;
-    margin-top: 67px;
-    text-align: center;
-  }
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-* {
-  transition: all 0.4s ease-out;
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-/*colors day*/
-$navbar-night: rgb(54, 52, 52);
-$font-color-night: rgb(255, 255, 255);
-$body-background-night: rgb(0, 0, 0);
-$container-night: rgb(54, 52, 52);
-$border-night: rgb(49, 43, 43);
-$button-night: rgb(67, 165, 168);
 
-.night-theme {
-  .navbar {
-    background-color: $navbar-night !important;
-    color: $font-color-night !important;
-  }
-  .container-fluid {
-    background: $body-background-night !important;
-    h1,
-    p {
-      color: $font-color-night;
+//navigation
+
+.containerNav {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+//toggle container
+.toggleContainer {
+    display: flex;
+
+}
+
+.toggleContainer>div {
+    padding: 0 5px;
+}
+
+//toggle switch
+
+$width: 120px;
+$padding: 7px;
+$height: $width / 2+$padding;
+
+
+
+.switch-wrap {
+    cursor: pointer;
+    background-image: $ToggleDarkTheme;
+    padding: $padding;
+    width: 70px;
+    height: $height - 35;
+    border-radius: $height / 2;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
     }
-
-    .card {
-      background-color: $border-night;
-      h5 {
-        color: $font-color-night;
-      }
-      img {
-        opacity: 0.8;
-      }
-      .card-body {
-        background: $container-night;
-      }
-      .btn-primary {
-        background: $button-night;
-        border-color: $button-night;
-      }
-    }
-  }
 }
-@media only screen and (max-width: 973px) {
-  .card {
-    margin: 10px 0;
-  }
-}
-
-
-/***********checkbox custom styles**************/
-/** Switch
- -------------------------------------*/
-
- .switch input {
-  position: absolute;
-  opacity: 0;
-}
-
-/**
- * 1. Adjust this to size
- */
 
 .switch {
-  display: inline-block;
-  font-size: 20px; /* 1 */
-  height: 1em;
-  width: 2em;
-  background: #5fccff;
-  border-radius: 1em;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0fr 1fr 2fr;
+    transition: .2s;
+
+    //ICYMI, pseudo elements are treated as grid items
+    &::after {
+        content: '';
+        border-radius: 50%;
+        background: $DarkDesaturatedBlueCardBG;
+        grid-column: 2;
+        transition: background .2s;
+    }
 }
 
-.switch div {
-  height: 1em;
-  width: 1em;
-  border-radius: 1em;
-  background: #fff;
-  box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
-  transition: all 300ms;
+input:checked {
+    +.switch {
+        grid-template-columns: 2fr 1fr 0fr;
+
+        &::after {
+            background-color: $WhiteBG;
+        }
+    }
 }
 
-.switch input:checked + div {
- 
-  transform: translate3d(100%, 0, 0);
+
+
+
+//Cards 
+
+
+.card {
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 3px 2px 18px -4px $DarkDesaturatedBlueCardBG;
+
+    .userName {
+        display: flex;
+        justify-content: center;
+        padding: 25px 0;
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5px;
+        }
+
+        h3 {
+            font-size: 16px;
+            padding-top: 7px;
+            color: $DarkDesaturatedBlueCardBG;
+            font-weight: 400;
+            color: $DarkGrayishBlueText;
+        }
+    }
+
+    .followers {
+        p:first-of-type {
+            font-size: 55px;
+            font-weight: 900;
+        }
+
+        p:last-of-type {
+            letter-spacing: 4px;
+            margin-top: -20px;
+            color: $DarkGrayishBlueText;
+        }
+    }
+
+    .trending {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0 10px 0;
+
+    }
+
+    .logo {
+        padding: 0 2px 0 0;
+    }
 }
 
-.text-toggle{
-  display: none;
+.card-fb {
+    border-top: 5px solid $Facebook;
+
+    .trending {
+        p {
+            color: $LimeGreen;
+            font-weight: 900;
+        }
+    }
+
+}
+
+.card-tw {
+    border-top: 5px solid $Twitter;
+
+    .trending {
+        p {
+            color: $LimeGreen;
+            font-weight: 900;
+        }
+    }
+}
+
+.insta-gradient {
+    padding-top: 5px;
+    background: $Instagram;
+    border-radius: 5px;
+
+
+    .trending {
+        p {
+            color: $LimeGreen;
+            font-weight: 900;
+        }
+    }
+}
+
+.card-youTube {
+    border-top: 5px solid $YouTube;
+
+    .trending {
+        p {
+            color: $BrightRed;
+            font-weight: 900;
+        }
+    }
+}
+
+//overview
+
+.overview {
+    margin: 30px 0;
+
+
+}
+
+//multiple cards
+.overview-card {
+
+    .header,
+    .header-info {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 15px 0 15px;
+
+    }
+
+    .counterViews {
+        font-size: 44px;
+        font-weight: bold;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        padding-bottom: 16px;
+    }
+}
+
+.positive {
+    color: $LimeGreen;
+    font-weight: 900;
+}
+
+.negative {
+    color: $BrightRed;
+    font-weight: 900;
+}
+
+.overviewCustom {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+//Responsive design 
+
+@media only screen and (max-width: 1000px) {
+    .overviewCustom {
+        display: flex;
+        flex-direction: column !important;
+        margin: 5px 0;
+    }
+
+    .overviewCustom {
+        display: flex;
+        flex-direction: column !important;
+        margin: 5px auto;
+    }
+
+    .cs {
+        flex: 1;
+
+    }
+}
+
+//lighr mode 
+.day-theme {
+    //top wrapper
+
+    .wrapper-top {
+        background: linear-gradient(to bottom, $VeryPaleBlueTopBGPattern 70%, rgb(255, 255, 255) 50%);
+    }
+    .card{
+        background-color: $LightGrayishBlueCardBG;
+        &:hover{
+            background:  $Toggle;
+            transition: all .4s linear;
+        }
+    }
+}
+
+//dark mode 
+.night-theme {
+    color: white;
+    background: $VeryDarkBlueText;
+    .card{
+        background: $DarkDesaturatedBlueCardBG;
+        &:hover{
+            background:  hsl(229, 10%, 45%);
+            transition: all .4s linear;
+        }
+    }
+}
+@media only screen and (max-width: 900px) {
+
+
+
+    .overview-card,
+    .card-fb,
+    .card-tw,
+    .card-instagram,
+    .card-youTube {
+        margin: 8px 0;
+    }
+
+    .card-instagram {
+        margin-top: 1px;
+    }
+
+    .navigation {
+
+        div:first-child {
+            display: block;
+            text-align: center;
+        }
+
+    }
+
+    .cs {
+        flex: 1;
+
+    }
 }

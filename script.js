@@ -6,9 +6,8 @@
 // }
 
 let manualButton = document.querySelector('.manual-container');
-let txt = document.querySelector('.text-toggle');
 const body = document.body;
-if (document.querySelector('#auto').checked) {
+if (document.querySelector('.autoToggle').checked) {
 
     //api link
     const url = 'https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&date=today';
@@ -18,7 +17,7 @@ if (document.querySelector('#auto').checked) {
 
     //convert from 12 to 24 time format 
     function convertTimetoMs(time) {
-        var PM = time.match('PM') ? true : false
+        let PM = time.match('PM') ? true : false
 
         time = time.split(':')
         var min = time[1]
@@ -65,14 +64,14 @@ if (document.querySelector('#auto').checked) {
 
 
 // show/hide manual button from auto toggle
-document.querySelector('#auto').addEventListener('click', (e) => {
+document.querySelector('.autoToggle').addEventListener('click', (e) => {
     const isChecked = e.target.checked;
     if (isChecked) {
         manualButton.style.display = 'none';
-        txt.style.display = 'none';
+       
     } else {
         manualButton.style.display = 'block';
-        txt.style.display = 'block'
+       
     }
 });
 //manual add light/dark theme
